@@ -6,7 +6,7 @@ Paper: Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, T
 
 ## Contents
 
-The provided dataset is a processed subset of the original dataset for our biomass turnover analysis of tree species populations demonstrated in the main paper. Readers interested in using the data for purposes other than testing our analysis are advised to obtain the raw data of tree inventories of the Pasoh 50-ha plot from the [Forest Research Institute Malaysia (FRIM)](https://www.frim.gov.my) and the [Center for Tropical Forest Science-Forest Global Earth Observatory (CTFS-Forest GEO)](https://forestgeo.si.edu/ctfs-forestgeo-worldwide-network-monitoring-forests-era-global-change), Smithsonian Tropical Research Institute.
+This dataset is a processed subset of the original dataset used in our analysis of biomass turnover across tree populations as demonstrated in the main paper. Readers interested in using the Pasoh 50-ha plot data for purposes other than reviewing our analysis are advised to contact the [Forest Research Institute Malaysia (FRIM)](https://www.frim.gov.my) and the [Center for Tropical Forest Science-Forest Global Earth Observatory (CTFS-Forest GEO)](https://forestgeo.si.edu/ctfs-forestgeo-worldwide-network-monitoring-forests-era-global-change), Smithsonian Tropical Research Institute.
 
 * **turnover_pfr.r** - R code for calculating species-specific structural data and turnover rates.
 
