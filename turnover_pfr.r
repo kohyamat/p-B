@@ -51,7 +51,7 @@ turnover <- function(y, z, t) {
 
 
 # production rate
-productivity <- function(dbh1, dbh2, w1, w2, wl1, wl2, t, dbh_min, mass_min, area) {
+productivity <- function(dbh1, dbh2, w1, w2, t, dbh_min, mass_min, area) {
   si <- ifelse(dbh1 >= dbh_min & dbh2 >= dbh_min, 1, 0) # survival
   di <- ifelse(dbh1 >= dbh_min & dbh2 < dbh_min, 1, 0) # death
   ri <- ifelse(dbh1 < dbh_min & dbh2 >= dbh_min, 1, 0) # recruitment
@@ -63,15 +63,11 @@ productivity <- function(dbh1, dbh2, w1, w2, wl1, wl2, t, dbh_min, mass_min, are
   BsT <- sum(si * w2, na.rm = TRUE)
   B0 <- Bs0 + sum(di * w1, na.rm = TRUE)
   BT <- BsT + sum(ri * w2, na.rm = TRUE)
-  BL0 <- sum(si * wl1, na.rm = TRUE) + sum(di * wl1, na.rm = TRUE)
-  BLT <- sum(si * wl2, na.rm = TRUE) + sum(di * wl2, na.rm = TRUE)
   # period-mean biomass and abundance
   Nw <- ifelse(NT != N0, (NT - N0) / log(NT / N0), N0)
   N <- Nw / area # (per ha)
   Bw <- ifelse(BT != B0, (BT - B0) / log(BT / B0), B0)
   B <- Bw / area
-  BLw <- ifelse(BLT != BL0, (BLT - BL0) / log(BLT / BL0), BL0)
-  B_L <- BLw / area
 
   # size distribution for initial population
   W_max <- as.numeric(quantile(w1[ri != 1], 0.99)) # Mg
@@ -91,7 +87,6 @@ productivity <- function(dbh1, dbh2, w1, w2, wl1, wl2, t, dbh_min, mass_min, are
 
   return(list(
     "B" = B,
-    "B_L" = B_L,
     "N" = N,
     "W_max" = W_max,
     "p" = p,
@@ -119,13 +114,10 @@ data_preparation <- function(d) {
   # add some columns to the dataframe
   d <- d %>%
     mutate(
-      t_mean = mean(t),
       dbh1 = ifelse(dbh1 >= dbh_min, dbh1, 0),
       dbh2 = ifelse(dbh2 >= dbh_min, dbh2, 0),
       w1 = biomass(dbh1) / 1000, # tree biomass in Mg
       w2 = biomass(dbh2) / 1000,
-      wl1 = biomass(dbh1, "l") / 1000, # tree leaf mass in Mg
-      wl2 = biomass(dbh2, "l") / 1000
     )
 
   # Select species with NsT >= 100
@@ -156,7 +148,7 @@ area <- 50 # total area in ha
 res1 <- df1 %>%
   group_nest(Cd) %>%
   mutate(y = purrr::map(data, ~ as_tibble(
-    with(., productivity(dbh1, dbh2, w1, w2, wl1, wl2, t, dbh_min, mass_min, area))
+    with(., productivity(dbh1, dbh2, w1, w2, t, dbh_min, mass_min, area))
   ))) %>%
   select(-data) %>%
   unnest(cols = c(y))
@@ -164,7 +156,7 @@ res1 <- df1 %>%
 res2 <- df2 %>%
   group_nest(Cd) %>%
   mutate(y = purrr::map(data, ~ as_tibble(
-    with(., productivity(dbh1, dbh2, w1, w2, wl1, wl2, t, dbh_min, mass_min, area))
+    with(., productivity(dbh1, dbh2, w1, w2, t, dbh_min, mass_min, area))
   ))) %>%
   select(-data) %>%
   unnest(cols = c(y))
