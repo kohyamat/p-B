@@ -171,8 +171,8 @@ write.csv(res2, file.path(outdir, "res_pfr_identity_free.csv"), row.names = FALS
 
 # Plot productivity ~ biomass ---------
 # Cd-sum plot-level productivity (Mg per ha per year)
-Ps1 <- c(sum(res1$p * res1$B), sum(res1$P_simple), sum(res1$P_simple_Clark))
-Ps2 <- c(sum(res2$p * res2$B), sum(res2$P_simple), sum(res2$P_simple_Clark))
+Ps1 <- with(res1, c(sum(p * B), sum(P_simple), sum(P_simple_Clark)))
+Ps2 <- with(res2, c(sum(p * B), sum(P_simple), sum(P_simple_Clark)))
 names(Ps1) <- c("P", "P_simple", "P_simple_Clark")
 names(Ps2) <- c("P", "P_simple", "P_simple_Clark")
 print("Observed")
@@ -192,23 +192,33 @@ print("Identity free")
 print(summary(fit2))
 
 # draw a plot
+xbreaks = c(.01, 1, 100)
 p1 <- ggplot(filter(res1, Cd != "Others"), aes(x = B, y = p)) +
   geom_point(alpha = .5) +
-  scale_x_log10(limits = c(0.0005, 100)) +
-  scale_y_log10(limits = c(0.001, 0.5)) +
+  geom_point(data = filter(res1, Cd == "Others"), shape = 18, size = 3,  alpha = .5) +
+  annotate(
+    "curve",
+    x = 20, y = .12, xend = 45.4, yend = .028,
+    curvature = -.25,
+    arrow = arrow(length = unit(2, "mm"))
+  ) +
+  annotate("text", x = 10, y = .2, label = "Rare species\naggregated", hjust = .5) +
+  scale_x_log10(limits = c(.0005, 100), breaks = xbreaks, labels = xbreaks) +
+  scale_y_log10(limits = c(.001, .5)) +
   labs(title = "(a) observed")
 
 p2 <- ggplot(filter(res2, Cd != "Others"), aes(x = B, y = p)) +
   geom_point(alpha = .5) +
-  scale_x_log10(limits = c(0.0005, 100)) +
-  scale_y_log10(limits = c(0.001, 0.5)) +
+  geom_point(data = filter(res2, Cd == "Others"), shape = 18, size = 3,  alpha = .5) +
+  scale_x_log10(limits = c(.0005, 100), breaks = xbreaks, labels = xbreaks) +
+  scale_y_log10(limits = c(.001, .5)) +
   labs(title = "(b) identity free")
 
-if (pval1 < 0.05) {
+if (pval1 < .05) {
   p1 <- p1 + geom_smooth(method = "lm", formula = y ~ x)
 }
 
-if (pval2 < 0.05) {
+if (pval2 < .05) {
   p2 <- p2 + geom_smooth(method = "lm", formula = y ~ x)
 }
 
@@ -217,4 +227,4 @@ p <- cowplot::plot_grid(p1, p2)
 # save a plot
 outdir <- "figs"
 dir.create(outdir, showWarnings = FALSE)
-ggsave(p, file = file.path(outdir, "p-B.png"), width = 9, height = 4)
+ggsave(p, file = file.path(outdir, "p-B.png"), width = 8.5, height = 4)
