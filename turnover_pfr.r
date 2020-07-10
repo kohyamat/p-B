@@ -202,7 +202,7 @@ p1 <- ggplot(filter(res1, Cd != "Others"), aes(x = B, y = p)) +
     curvature = -.25,
     arrow = arrow(length = unit(2, "mm"))
   ) +
-  annotate("text", x = 10, y = .2, label = "Rare species\naggregated", hjust = .5) +
+  annotate("text", x = 10, y = .2, label = "rare species\ncombined", hjust = .5) +
   scale_x_log10(limits = c(.0005, 100), breaks = xbreaks, labels = xbreaks) +
   scale_y_log10(limits = c(.001, .5)) +
   labs(title = "(a) observed")
