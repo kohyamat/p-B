@@ -41,7 +41,7 @@ vignettes/*.pdf
 # Output
 output/
 figs/
-Rplot.pdf
+Rplots.pdf
 
 # Others
 ~$*
