@@ -151,7 +151,7 @@ res1 <- df1 %>%
     with(., productivity(dbh1, dbh2, w1, w2, t, dbh_min, mass_min, area))
   ))) %>%
   select(-data) %>%
-  unnest(cols = c(y))
+  unnest(cols = y)
 
 res2 <- df2 %>%
   group_nest(Cd) %>%
@@ -159,7 +159,7 @@ res2 <- df2 %>%
     with(., productivity(dbh1, dbh2, w1, w2, t, dbh_min, mass_min, area))
   ))) %>%
   select(-data) %>%
-  unnest(cols = c(y))
+  unnest(cols = y)
 
 
 # write results
@@ -180,7 +180,7 @@ print(Ps1)
 print("Identity free")
 print(Ps2)
 
-# fit the linear regression model
+# fit a linear regression model
 fit1 <- lm(log(p) ~ log(B), data = filter(res1, Cd != "Others"))
 pval1 <- summary(fit1)$coefficients[2, 4]
 print("Observed")
