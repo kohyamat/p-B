@@ -1,8 +1,8 @@
 # p-B
 
-These files are R code and plot data files used for calculating species population turnover of biomass and abundance in a tropical forest plot.
+These files are the R code and plot data files used for calculating species population turnover of biomass and abundance in a tropical forest plot.
 
-Paper: Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil. Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. (*submitted*)
+Paper: Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil. 2020. Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. *Journal of Ecology* in press.
 
 ## Contents
 
