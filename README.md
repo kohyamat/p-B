@@ -2,11 +2,11 @@
 
 These files are the R code and plot data files used for calculating species population turnover of biomass and abundance in a tropical forest plot.
 
-**Paper**: Takkashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil (2020) Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. *Journal of Ecology* in press.
+**Paper**: Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil (2020) Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. *Journal of Ecology* in press. https://doi.org/10.1111/1365-2745.13485
 
 ## Contents
 
-This dataset is a processed subset of the original dataset used in our analysis of biomass turnover across tree populations as demonstrated in the main paper. Readers interested in using the Pasoh 50-ha plot data for purposes other than reviewing our analysis are advised to contact the [Forest Research Institute Malaysia (FRIM)](https://www.frim.gov.my) and the [Center for Tropical Forest Science-Forest Global Earth Observatory (CTFS-Forest GEO)](https://forestgeo.si.edu), Smithsonian Tropical Research Institute.
+This dataset is a processed subset of the original dataset used in our analysis of biomass turnover across tree populations as demonstrated in [the main paper](https://doi.org/10.1111/1365-2745.13485). Readers interested in using the Pasoh 50-ha plot data for purposes other than reviewing our analysis are advised to contact the [Forest Research Institute Malaysia (FRIM)](https://www.frim.gov.my) and the [Center for Tropical Forest Science-Forest Global Earth Observatory (CTFS-Forest GEO)](https://forestgeo.si.edu), Smithsonian Tropical Research Institute.
 
 * **turnover_pfr.r** - R code for calculating species-specific structural data and turnover rates.
 
