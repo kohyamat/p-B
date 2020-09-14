@@ -2,7 +2,8 @@
 
 These files are the R code and plot data files used for calculating species population turnover of biomass and abundance in a tropical forest plot.
 
-**Paper**: Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil (2020) Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. *Journal of Ecology* in press. https://doi.org/10.1111/1365-2745.13485
+### Paper
+Takashi S. Kohyama, Matthew D. Potts, Tetsuo I. Kohyama, Kaoru Niiyama, Tze Leong Yao, Stuart J. Davies, & Douglas Sheil (2020) Trade-off between standing biomass and productivity in species-rich tropical forest: evidence, explanations and implications. *Journal of Ecology* in press. https://doi.org/10.1111/1365-2745.13485
 
 ## Contents
 
@@ -10,7 +11,12 @@ This dataset is a processed subset of the original dataset used in our analysis 
 
 * **turnover_pfr.r** - R code for calculating species-specific structural data and turnover rates.
 
-* **data/pfr_observed.csv.gz** - Pasoh 50-ha plot data, Peninsular Malaysia, for ca. 1990 and ca. 2000 censuses: Cd for species code, (x, y) for coordinates (m) of stem location, dbh1 and dbh2 (cm) for stem diameter in 1990 and 2000, respectively, and t (year) for inter-census duration.
+* **data/pfr_observed.csv.gz** - Pasoh 50-ha plot data, Peninsular Malaysia, for ca. 1990 and ca. 2000 censuses.
+  * `Cd` - species code
+  * `x, y` - coordinates (m) of stem location
+  * `dbh1` - stem diameter (cm) in 1990
+  * `dbh2` - stem diameter (cm) in 2000
+  * `t` - inter-census duration (year) 
 
 * **data/pfr_identity_free.csv.gz** - Pasoh 50-ha plot data (as pfr_observed.csv), where species identity and location are replaced between two stems with closest dbh1.
 
