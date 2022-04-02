@@ -36,7 +36,7 @@ turnover <- function(y, z, t) {
   df <- function(rho) {
     sum(-t * y * exp(-rho * t))
   }
-  # Newton-Rapton iteration
+  # Newton-Raphson iteration
   rho <- 0.02
   precision <- 1.0e-12 # to stop iteration
   change <- precision + 1.0
